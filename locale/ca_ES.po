@@ -1,0 +1,19 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.invoice.line,purchase:"
+msgid "Purchase"
+msgstr "Purchase"
+
+msgctxt "field:account.invoice.line,purchase_shipment_date:"
+msgid "Shipment Date"
+msgstr "Data albarà"
+
+msgctxt "field:stock.move,purchase_date:"
+msgid "Purchase Date"
+msgstr "Data de compra"
+
+msgctxt "view:stock.move:"
+msgid "Incoming Moves"
+msgstr "Moviments d'entrada"
