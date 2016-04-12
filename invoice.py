@@ -34,7 +34,7 @@ class InvoiceLine:
         PurchaseLine = pool.get('purchase.line')
         purchase_line = PurchaseLine.__table__()
         table = cls.__table__()
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
 
         line_ids = [l.id for l in lines]
         result = {}.fromkeys(line_ids, None)
@@ -61,7 +61,7 @@ class InvoiceLine:
         table = cls.__table__()
         purchase_line = PurchaseLine.__table__()
         move = Move.__table__()
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
 
         line_ids = [l.id for l in lines]
         result = {}.fromkeys(line_ids, None)
