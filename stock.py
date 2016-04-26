@@ -26,7 +26,7 @@ class StockMove:
         PurchaseLine = pool.get('purchase.line')
         purchase_line = PurchaseLine.__table__()
         table = cls.__table__()
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
 
         line_ids = [l.id for l in lines]
         result = {}.fromkeys(line_ids, None)
@@ -53,7 +53,7 @@ class StockMove:
         table = cls.__table__()
         purchase_line = PurchaseLine.__table__()
         purchase = Purchase.__table__()
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
 
         move_ids = [m.id for m in moves]
         result = {}.fromkeys(move_ids, None)
