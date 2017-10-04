@@ -14,8 +14,7 @@ __all__ = ['InvoiceLine']
 __metaclass__ = PoolMeta
 
 _STATES = {
-    'invisible': ~Eval('context', {}).get('type', '').in_(
-        ['in_invoice', 'in_credit_note']),
+    'invisible': ~Eval('context', {}).get('type', '').in_(['in']),
     }
 
 
