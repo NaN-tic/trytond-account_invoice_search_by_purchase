@@ -27,30 +27,17 @@ class InvoiceLine:
             states=_STATES),
         'get_purchase_shipment_date', searcher='search_purchase_shipment_date')
 
-    @classmethod
-    def get_purchase(cls, lines, name):
+    def get_purchase(self, name):
         pool = Pool()
         PurchaseLine = pool.get('purchase.line')
-        purchase_line = PurchaseLine.__table__()
-        table = cls.__table__()
-        cursor = Transaction().connection.cursor()
 
-        line_ids = [l.id for l in lines]
-        result = {}.fromkeys(line_ids, None)
-        for sub_ids in grouped_slice(line_ids):
-            cursor.execute(*table.join(purchase_line,
-                    condition=((Cast(Substring(table.origin,
-                                Position(',', table.origin) + Literal(1)),
-                        cls.id.sql_type().base) == purchase_line.id)
-                        & table.origin.ilike('purchase.line,%'))).select(
-                    table.id, purchase_line.purchase,
-                    where=reduce_ids(table.id, sub_ids)))
-            result.update(dict(cursor.fetchall()))
-        return result
+        if isinstance(self.origin, PurchaseLine):
+            return self.origin.purchase.id
 
     @classmethod
     def search_purchase(cls, name, clause):
-        return [('origin.purchase', clause[1], clause[2], 'purchase.line')]
+        return [('origin.' + clause[0],) + tuple(clause[1:3])
+            + ('purchase.line',) + tuple(clause[3:])]
 
     @classmethod
     def get_purchase_shipment_date(cls, lines, name):

@@ -4,8 +4,8 @@ import unittest
 import doctest
 import trytond.tests.test_tryton
 from trytond.tests.test_tryton import ModuleTestCase
-from trytond.tests.test_tryton import (doctest_setup, doctest_teardown,
-    doctest_checker)
+from trytond.tests.test_tryton import doctest_teardown, doctest_checker
+
 
 class AccountInvoiceSearchByPurchaseTestCase(ModuleTestCase):
     'Test Purchase module'
@@ -18,7 +18,7 @@ def suite():
         AccountInvoiceSearchByPurchaseTestCase))
     suite.addTests(doctest.DocFileSuite(
             'scenario_account_invoice_search_by_purchase.rst',
-            setUp=doctest_setup, tearDown=doctest_teardown, encoding='UTF-8',
+            tearDown=doctest_teardown, encoding='UTF-8',
             optionflags=doctest.REPORT_ONLY_FIRST_FAILURE,
             checker=doctest_checker))
     return suite
