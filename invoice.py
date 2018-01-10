@@ -11,7 +11,6 @@ from trytond.tools import grouped_slice, reduce_ids
 from trytond.transaction import Transaction
 
 __all__ = ['InvoiceLine']
-__metaclass__ = PoolMeta
 
 _STATES = {
     'invisible': ~Eval('context', {}).get('type', '').in_(['in']),
@@ -20,6 +19,7 @@ _STATES = {
 
 class InvoiceLine:
     __name__ = 'account.invoice.line'
+    __metaclass__ = PoolMeta
     purchase = fields.Function(fields.Many2One('purchase.purchase',
             'Purchase', states=_STATES),
         'get_purchase', searcher='search_purchase')
