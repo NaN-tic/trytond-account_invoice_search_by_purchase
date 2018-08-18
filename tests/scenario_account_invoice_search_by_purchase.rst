@@ -132,7 +132,7 @@ Create an Inventory::
     >>> inventory_line.expected_quantity = 0.0
     >>> inventory.click('confirm')
     >>> inventory.state
-    u'done'
+    'done'
 
 Purchase 5 products::
 
@@ -158,7 +158,7 @@ Purchase 5 products::
     >>> purchase.click('confirm')
     >>> purchase.click('process')
     >>> purchase.state
-    u'processing'
+    'processing'
     >>> move1, move2 = purchase.moves
     >>> move1.purchase == purchase
     True

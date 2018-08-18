@@ -6,9 +6,8 @@ from trytond.pool import PoolMeta
 __all__ = ['StockMove']
 
 
-class StockMove:
+class StockMove(metaclass=PoolMeta):
     __name__ = 'stock.move'
-    __metaclass__ = PoolMeta
     purchase_date = fields.Function(fields.Date('Purchase Date'),
         'get_purchase_date', searcher='search_purchase_date')
 
