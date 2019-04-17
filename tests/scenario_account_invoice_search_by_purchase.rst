@@ -165,6 +165,7 @@ Purchase 5 products::
 
 Create shipment in::
 
+    >>> Move = Model.get('stock.move')
     >>> ShipmentIn = Model.get('stock.shipment.in')
     >>> shipment_in = ShipmentIn()
     >>> shipment_in.supplier = supplier
@@ -172,10 +173,10 @@ Create shipment in::
     >>> shipment_in.warehouse = warehouse_loc
     >>> shipment_in.company = company
     >>> shipment_in.save()
-    >>> move1.shipment = shipment_in
-    >>> move1.save()
-    >>> move2.shipment = shipment_in
-    >>> move2.save()
+    >>> for move in purchase.moves:
+    ...     incoming_move = Move(id=move.id)
+    ...     shipment_in.incoming_moves.append(incoming_move)
+    >>> shipment_in.save()
     >>> shipment_in.click('receive')
     >>> shipment_in.click('done')
 

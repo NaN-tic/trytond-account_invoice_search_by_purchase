@@ -34,7 +34,7 @@ class InvoiceLine(metaclass=PoolMeta):
             return self.origin.purchase.id
 
     @classmethod
-    def search_purchase(cls, name, clause):
+    def search_purchase(cls, name, clause):    
         return [('origin.' + clause[0],) + tuple(clause[1:3])
             + ('purchase.line',) + tuple(clause[3:])]
 
