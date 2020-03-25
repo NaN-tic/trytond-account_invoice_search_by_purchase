@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -8,7 +8,7 @@ msgstr "Compras"
 
 msgctxt "field:account.invoice.line,purchase_shipment_date:"
 msgid "Shipment Date"
-msgstr "Fecha albarán"
+msgstr "Fecha del albarán"
 
 msgctxt "field:stock.move,purchase_date:"
 msgid "Purchase Date"
