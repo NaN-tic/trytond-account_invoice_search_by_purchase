@@ -3,7 +3,7 @@
      copyright notices and license terms. -->
 <data>
     <xpath expr="/tree/field[@name='amount']" position="before">
-        <field name="purchase"/>
-        <field name="purchase_shipment_date"/>
+        <field name="purchase" optional="1"/>
+        <field name="purchase_shipment_date" optional="1"/>
     </xpath>
 </data>
